@@ -25,14 +25,15 @@ body{
 }
 
 .hero h2{
-    line-height:1.6;
     font-size:2rem;
+    line-height:1.6;
+    margin-bottom:20px;
 }
 
 .hero p{
-    color:#cbd5e1;
     max-width:700px;
     margin:auto;
+    color:#cbd5e1;
 }
 
 .container{
@@ -52,10 +53,14 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:15px;
-    padding:15px;
     background:#334155;
+    padding:15px;
     border-radius:10px;
+    margin-top:15px;
+}
+
+.quest a{
+    text-decoration:none;
 }
 
 button{
@@ -84,6 +89,32 @@ button:hover{
     width:0%;
     background:#8b5cf6;
 }
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.stat-box{
+    background:#1e293b;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.stat-box h3{
+    font-size:2rem;
+    margin:0;
+    color:#8b5cf6;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#94a3b8;
+}
 </style>
 </head>
 
@@ -100,13 +131,32 @@ Earn Achievements.
 </h2>
 
 <p>
-Explore the OPN ecosystem through quests, achievements,
-and community challenges.
+Explore the OPN ecosystem through quests, community engagement,
+and ecosystem discovery.
 </p>
 
 </section>
 
 <div class="container">
+
+<div class="stats">
+
+<div class="stat-box">
+<h3>12</h3>
+<p>Projects Listed</p>
+</div>
+
+<div class="stat-box">
+<h3>34</h3>
+<p>Builders</p>
+</div>
+
+<div class="stat-box">
+<h3>126</h3>
+<p>Completed Quests</p>
+</div>
+
+</div>
 
 <div class="card">
 
@@ -122,27 +172,52 @@ and community challenges.
 
 <div class="card">
 
-<h2>Daily Quests</h2>
+<h2>Community Quests</h2>
+
+<div class="quest">
+<span>Follow @IOPn_io (+50 XP)</span>
+
+<a href="https://x.com/IOPn_io" target="_blank">
+<button onclick="completeQuest(50,this)">Start Quest</button>
+</a>
+</div>
+
+<div class="quest">
+<span>Follow @nawijikk (+75 XP)</span>
+
+<a href="https://x.com/nawijikk" target="_blank">
+<button onclick="completeQuest(75,this)">Start Quest</button>
+</a>
+</div>
+
+<div class="quest">
+<span>Join OPN Discord (+100 XP)</span>
+
+<a href="https://discord.gg/iopn" target="_blank">
+<button onclick="completeQuest(100,this)">Join</button>
+</a>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Ecosystem Quests</h2>
 
 <div class="quest">
 <span>Visit OPNAtlas (+50 XP)</span>
-<button onclick="completeQuest(50,this)">
-Complete
-</button>
+
+<a href="https://opn-atlas.vercel.app" target="_blank">
+<button onclick="completeQuest(50,this)">Visit</button>
+</a>
 </div>
 
 <div class="quest">
 <span>Explore UNIE (+75 XP)</span>
-<button onclick="completeQuest(75,this)">
-Complete
-</button>
-</div>
 
-<div class="quest">
-<span>Follow Builder (+100 XP)</span>
-<button onclick="completeQuest(100,this)">
-Complete
-</button>
+<a href="https://unie-three.vercel.app" target="_blank">
+<button onclick="completeQuest(75,this)">Explore</button>
+</a>
 </div>
 
 </div>
@@ -151,10 +226,11 @@ Complete
 
 <h2>Achievements</h2>
 
-<p>🏆 First Quest</p>
-<p>🏆 Explorer</p>
+<p>🏆 OPN Explorer</p>
+<p>🏆 Community Member</p>
+<p>🏆 Ecosystem Supporter</p>
 <p>🔒 Builder Badge</p>
-<p>🔒 Community Champion</p>
+<p>🔒 OPN Champion</p>
 
 </div>
 
@@ -162,13 +238,18 @@ Complete
 
 <h2>Leaderboard</h2>
 
-<p>1. BuilderOne — 520 XP</p>
-<p>2. Alice — 450 XP</p>
-<p>3. Bob — 390 XP</p>
+<p>🥇 Community Explorer — 520 XP</p>
+<p>🥈 Builder Alpha — 450 XP</p>
+<p>🥉 OPN Supporter — 390 XP</p>
 
 </div>
 
 </div>
+
+<footer>
+<p>OPNQuest © 2026</p>
+<p>Community onboarding and ecosystem engagement platform for OPN Chain.</p>
+</footer>
 
 <script>
 let xp = 0;
@@ -181,16 +262,20 @@ function completeQuest(reward, button){
 
     document.getElementById("xp").innerText = xp;
 
-    let percent = (xp/500)*100;
+    let percent = (xp / 500) * 100;
 
-    if(percent > 100) percent = 100;
+    if(percent > 100){
+        percent = 100;
+    }
 
     document.getElementById("progress").style.width = percent + "%";
 
-    button.innerText = "Completed";
+    button.innerText = "Completed ✓";
     button.disabled = true;
 }
 </script>
 
+</body>
+</html>
 </body>
 </html>
