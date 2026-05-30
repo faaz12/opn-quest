@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPNQuest</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#8b5cf6;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    line-height:1.6;
+    font-size:2rem;
+}
+
+.hero p{
+    color:#cbd5e1;
+    max-width:700px;
+    margin:auto;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.quest{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+    padding:15px;
+    background:#334155;
+    border-radius:10px;
+}
+
+button{
+    background:#8b5cf6;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.progress-bar{
+    width:100%;
+    height:20px;
+    background:#334155;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:#8b5cf6;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>OPNQuest</h1>
+
+<h2>
+Complete Tasks.<br>
+Discover Projects.<br>
+Earn Achievements.
+</h2>
+
+<p>
+Explore the OPN ecosystem through quests, achievements,
+and community challenges.
+</p>
+
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Your Progress</h2>
+
+<p>XP: <span id="xp">0</span> / 500</p>
+
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Daily Quests</h2>
+
+<div class="quest">
+<span>Visit OPNAtlas (+50 XP)</span>
+<button onclick="completeQuest(50,this)">
+Complete
+</button>
+</div>
+
+<div class="quest">
+<span>Explore UNIE (+75 XP)</span>
+<button onclick="completeQuest(75,this)">
+Complete
+</button>
+</div>
+
+<div class="quest">
+<span>Follow Builder (+100 XP)</span>
+<button onclick="completeQuest(100,this)">
+Complete
+</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Achievements</h2>
+
+<p>🏆 First Quest</p>
+<p>🏆 Explorer</p>
+<p>🔒 Builder Badge</p>
+<p>🔒 Community Champion</p>
+
+</div>
+
+<div class="card">
+
+<h2>Leaderboard</h2>
+
+<p>1. BuilderOne — 520 XP</p>
+<p>2. Alice — 450 XP</p>
+<p>3. Bob — 390 XP</p>
+
+</div>
+
+</div>
+
+<script>
+let xp = 0;
+
+function completeQuest(reward, button){
+
+    if(button.disabled) return;
+
+    xp += reward;
+
+    document.getElementById("xp").innerText = xp;
+
+    let percent = (xp/500)*100;
+
+    if(percent > 100) percent = 100;
+
+    document.getElementById("progress").style.width = percent + "%";
+
+    button.innerText = "Completed";
+    button.disabled = true;
+}
+</script>
+
+</body>
+</html>
